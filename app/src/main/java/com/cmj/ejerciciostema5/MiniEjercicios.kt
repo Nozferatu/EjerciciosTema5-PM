@@ -40,6 +40,22 @@ fun main(){
     //Ejercicio 11
     val cadenaFormat = "Hola %s, bienvenido a %s".format("humano", "tu infierno personal")
     println(cadenaFormat)
+
+    //Ejercicio 13
+    var a: Int? = null
+    var b: Int? = null
+
+    if(a != null && b != null){
+        println(a + b)
+        println(a - b)
+        println(a * b)
+    }
+
+    //Ejercicio 14
+    var variableNula: String = null ?: ""
+
+    //Ejercicio 15
+
 }
 
 fun longitudCadena(cadena: String): Int {
