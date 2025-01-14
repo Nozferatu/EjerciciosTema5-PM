@@ -55,7 +55,55 @@ fun main(){
     var variableNula: String = null ?: ""
 
     //Ejercicio 15
+    longitudCadenaSmartCast("Esternocleidomastoideo")
 
+    //Ejercicio 16
+    dividirNumeros(5, 0)
+
+    //Ejercicio 17
+    println("Ingresa un número:")
+    val input = readLine()
+    val numInput: Int
+    try{
+        numInput = input?.toInt() ?: 0
+    } catch (e: Exception){
+        println("No se ha podido convertir la entrada a un número")
+    }
+
+    //Ejercicio 18
+    operacionesBasicas(4, 0)
+
+    //Ejercicio 19
+    val variableAny: Any = 5
+
+    var variableInt = variableAny as Int
+    variableInt = (variableAny as? Int)!!
+
+    var variableString: String?
+    try{
+        variableString = variableAny as String
+    } catch (e: Exception){
+        println("No se pudo realizar el casteo")
+    }
+
+    variableString = variableAny as? String ?: ""
+
+    //Ejercicio 20
+    try {
+        val listaNumeros = listOf(5, 0)
+        println(10 / listaNumeros.random())
+
+        val datos = listOf<Any>("ola")
+        val dato = datos.random() as Int
+
+        println(dato)
+    } catch (e: ArithmeticException) {
+        println("Ha ocurrido un error: No se pudo dividir entre cero")
+    } catch (e: ClassCastException) {
+        println("Ha ocurrido un error: No se pudo castear un String a un Int")
+    } finally {
+        println("Fin del bloque trycatch")
+    }
 }
 
 fun longitudCadena(cadena: String): Int {
@@ -68,4 +116,32 @@ fun sonIguales(cadena1: String, cadena2: String): Boolean{
 
 fun compararCadenas(cadena1: String, cadena2: String){
     println(cadena1.compareTo(cadena2))
+}
+
+fun longitudCadenaSmartCast(cadena: Any): Int{
+    if(cadena is String){
+        return cadena.length
+    }else return -1
+}
+
+fun dividirNumeros(a: Int, b: Int): Int{
+    try {
+        val resultado = a / b
+
+        return resultado
+    } catch (e: Exception){
+        println("No se puede dividir entre cero")
+        return -1
+    }
+}
+
+fun operacionesBasicas(a: Int, b: Int){
+    println(a + b)
+    println(a - b)
+    println(a * b)
+    try {
+        println(a / b)
+    } catch (e: Exception){
+        println("No se puede dividir entre cero")
+    }
 }
