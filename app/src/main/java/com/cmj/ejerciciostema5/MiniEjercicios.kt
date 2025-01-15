@@ -104,6 +104,59 @@ fun main(){
     } finally {
         println("Fin del bloque trycatch")
     }
+
+    //Ejercicio 21
+    val punto1 = Point(0, 0)
+    val punto2 = Point(2, 2)
+    val distancia = punto1 distancia punto2
+    println("Distancia: $distancia")
+
+    //Ejercicio 22
+    val suma by lazy {
+        5 + 4
+    }
+
+    println("Suma lazy: $suma")
+
+    lateinit var cadenaLate: String
+
+    //Ejercicio 23
+    val constructor = StringBuilder()
+    with(constructor){
+        append("ola")
+        append(" ke")
+        append(" ase")
+    }
+
+    println("Resultado StringBuilder con with: $constructor")
+
+    //Ejercicio 24
+    val persona = Persona()
+    persona.apply {
+        nombre = "Juan"
+        edad = 25
+        direccion = "C/Inexistente, 9"
+    }
+
+    //Ejercicio 25
+    val rectangulo = Rectangulo(5f, 7.5f)
+    rectangulo.run {
+        println(calculateArea(longitud, ancho))
+    }
+
+    //Ejercicio 26
+    val cadenaNullable: String? = "cadena"
+
+    cadenaNullable?.let {
+        println(cadenaNullable.length)
+    }
+
+    //Ejercicio 27
+    val listaNumeros = listOf(1, 3, 5)
+    listaNumeros
+        .also { println("Lista original: $it") }
+        .map { it * 2 }
+        .also { println("Lista modificada: $it") }
 }
 
 fun longitudCadena(cadena: String): Int {
@@ -145,3 +198,5 @@ fun operacionesBasicas(a: Int, b: Int){
         println("No se puede dividir entre cero")
     }
 }
+
+fun calculateArea(longitud: Float, ancho: Float): Float = longitud * ancho
